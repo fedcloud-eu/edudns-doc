@@ -13,5 +13,5 @@ The secret management service is designed as follows:
 * Simple usage: Authentication via OIDC tokens from EGI Check-in, no extra credentials are required. The service is
   based on Hashicorp’s Vault which is well-known in industry, with many client tools and libraries.
 * High-availability: Service instances are distributed on different sites, without single point of failure. A generic
-  endpoint `https://vault.services.fedcloud.eu:8200 <https://vault.services.fedcloud.eu:8200>`_ is dynamically assigned
+  endpoint https://vault.services.fedcloud.eu:8200 is dynamically assigned
   to a healthy instance via Dynamic DNS service.
