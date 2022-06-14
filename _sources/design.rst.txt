@@ -1,5 +1,8 @@
-Design
-======
+Service design and implementation
+=================================
+
+In this section, the design and implementation of the service will be explained. It may be interesting
+for advanced users and developers how to achieve high availability of the service via Dynamic DNS.
 
 Vault servers
 *************

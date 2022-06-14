@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Design" href="design.html" />
+    <link rel="next" title="Service design and implementation" href="design.html" />
     <link rel="prev" title="Introduction" href="intro.html" /> 
 </head>
 
@@ -46,10 +46,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#using-vault-via-web-based-gui">Using Vault via web-based GUI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-vault-via-vault-cli-and-access-token">Using Vault via Vault CLI and access token</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-vault-via-rest-api-or-external-clients">Using Vault via REST API or external clients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#note">Note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Service design and implementation</a></li>
 </ul>
 
         </div>
@@ -78,6 +78,7 @@
              
   <section id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h1>
+<p>Vault service can be used via web-based GUI, command-line client or third-party tools/libraries.</p>
 <section id="using-vault-via-web-based-gui">
 <h2>Using Vault via web-based GUI<a class="headerlink" href="#using-vault-via-web-based-gui" title="Permalink to this heading"></a></h2>
 <ul class="simple">
@@ -176,8 +177,8 @@ key1                value1
 clients/tools for accessing secrets in Vault. See <a class="reference external" href="https://www.vaultproject.io/api">https://www.vaultproject.io/api</a> or
 <a class="reference external" href="https://www.vaultproject.io/api-docs/relatedtools">https://www.vaultproject.io/api-docs/relatedtools</a> for more details.</p>
 </section>
-<section id="note">
-<h2>Note<a class="headerlink" href="#note" title="Permalink to this heading"></a></h2>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h2>
 <p>The default expiration time of secrets (refresh_interval) is set to 768h (32 days). Users can
 set other expiration times for their secrets, e.g. 365 days, by adding option “ttl=365d” at creation.</p>
 <p>There are alternative commands “kv put”, “kv get” for “write”, “read”. The full list of Vault
@@ -190,7 +191,7 @@ commands is available at <a class="reference external" href="https://www.vaultpr
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="intro.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="design.html" class="btn btn-neutral float-right" title="Design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="design.html" class="btn btn-neutral float-right" title="Service design and implementation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
