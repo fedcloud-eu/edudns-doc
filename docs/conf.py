@@ -61,7 +61,7 @@ html_context = {
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
-html_logo = "vault-logo.png"
+html_logo = "vault-logo-small.png"
 html_theme_options = {
     "logo_only": True,
     "display_version": False,
