@@ -1,6 +1,7 @@
 Usage
 =====
 
+Vault service can be used via web-based GUI, command-line client or third-party tools/libraries.
 
 Using Vault via web-based GUI
 *****************************
@@ -112,8 +113,8 @@ Vault has a REST API with similar inputs like the CLI. There is a long list of l
 clients/tools for accessing secrets in Vault. See https://www.vaultproject.io/api or
 https://www.vaultproject.io/api-docs/relatedtools for more details.
 
-Note
-****
+Notes
+*****
 
 The default expiration time of secrets (refresh_interval) is set to 768h (32 days). Users can
 set other expiration times for their secrets, e.g. 365 days, by adding option “ttl=365d” at creation.
