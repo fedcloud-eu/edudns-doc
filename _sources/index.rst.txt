@@ -1,8 +1,10 @@
 .. vault-doc documentation master file
 
 
-Welcome to fedcloudclient's documentation!
-==========================================
+Welcome to Vault service documentation!
+=======================================
+
+Vault service for EGI Infrastructure is available at https://vault.services.fedcloud.eu:8200.
 
 .. toctree::
    :maxdepth: 2

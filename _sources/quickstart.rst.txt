@@ -18,7 +18,7 @@ Using Vault via web-based GUI
 * Login via EGI Check-in and authorize the Vault GUI.
 
 * You have logged into the Vault GUI. Each user has a private secret space, a “home directory” in
-   the secret engine “secrets”, with EGI Check-in ID as the folder name.
+  the secret engine “secrets”, with EGI Check-in ID as the folder name.
 
 .. image:: images/vault-main-window.png
   :width: 640
