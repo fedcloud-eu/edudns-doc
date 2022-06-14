@@ -10,7 +10,7 @@ Welcome to fedcloudclient's documentation!
 
    intro
    quickstart
-   install
+   design
    usage
 
 
