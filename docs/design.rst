@@ -5,6 +5,7 @@ Vault servers
 *************
 
 Three Vault servers located at IISAS, INFN and  IFCA for high availability with server names:
+
 * vault-iisas.services.fedcloud.eu,
 * vault-infn.services.fedcloud.eu,
 * vault-ifca.services.fedcloud.eu.
@@ -20,8 +21,8 @@ it will forward users’ requests to the active server.
   :width: 1024
   :alt: Vault scheme
 
-Vault endpoints
-***************
+Generic endpoint and high availability
+**************************************
 
 As mentioned above, users can use any of the endpoints directly:
 
@@ -29,14 +30,14 @@ As mentioned above, users can use any of the endpoints directly:
 * https://vault-infn.services.fedcloud.eu:8200,
 * https://vault-ifca.services.fedcloud.eu:8200,
 
-Data is replicated among Vault servers automatically, so it is not important which endpoint is used.
-Users can store secrets via one endpoint and retrieve them via another one.
+However, accessing the service via the endpoints is not recommended: if a server is down, its endpoint
+is not accessible.
 
-The generic endpoint https://vault.services.fedcloud.eu:8200 will be attached to one of the vault-infn
-and vault-ifca server instances automatically via Dynamic DNS service (located at IISAS). A simple cron
-script, running on the server instances at INFN and IFCA, will make a periodically check: if the
-generic endpoint is attached on the other server instance and is faulty, then assign the generic
-hostname vault.services.fedcloud.eu to its own instance.
+For convenience and high availability, a generic endpoint https://vault.services.fedcloud.eu:8200
+should be used for accessing the service. The endpoint will be attached to one of the *vault-infn*
+and *vault-ifca* server instances automatically via Dynamic DNS service (located at IISAS).
+A simple cron script, running on the server instances at INFN and IFCA, will make a periodically
+check and assign the generic hostname *vault.services.fedcloud.eu* to the healthy server.
 
 The recovery time of the generic endpoint, in the case of the unscheduled downtime of the generic
 endpoint’s server, is T+1 minutes, where T is the interval between cron checks (1min) . In the case

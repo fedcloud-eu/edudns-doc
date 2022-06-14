@@ -1,112 +1,122 @@
-Quick start
-===========
-
-The `Tutorial <https://docs.google.com/presentation/d/1aOdcceztXe8kZaIeVnioF9B0vIHLzJeklSNOdVCL3Rw/edit?usp=sharing>`_
-presentation is designed for new users of **fedcloudclient**. It starts with the quick setup and basic usages,
-then step by step to more advanced scenarios.
-
-Setup
-*****
-
-* Install fedcloudclient via pip:
-
-::
-
-    $ pip3 install fedcloudclient
-
-or use Docker container:
-
-::
-
-    $ docker run -it  tdviet/fedcloudclient bash
+Usage
+=====
 
 
-* Get a new access token from EGI Check-in according to instructions from
-  `EGI Check-in Token Portal <https://aai.egi.eu/token>`_
-  or `oidc-agent <https://indigo-dc.gitbook.io/oidc-agent/>`_ and set
-  environment variable.
+Using Vault via web-based GUI
+*****************************
 
-  Note: Do not supply refresh tokens as access tokens.
+* Open https://vault.services.fedcloud.eu:8200 in your browser.
 
-::
+* Choose OIDC authentication method in the pulldown menu, and click on the button
+  *“Sign in with OIDC provider”*
 
-    $ export OIDC_ACCESS_TOKEN=<ACCESS_TOKEN>
+.. image:: images/vault-login-oidc.png
+  :width: 640
+  :alt: Vault login via OIDC
 
-Basic usages
-************
+* Login via EGI Check-in and authorize the Vault GUI.
 
-* List your VO memberships according to the access token:
+* You have logged into the Vault GUI. Each user has a private secret space, a “home directory” in
+   the secret engine “secrets”, with EGI Check-in ID as the folder name.
 
-::
+.. image:: images/vault-main-window.png
+  :width: 640
+  :alt: Vault main window
 
-    $ fedcloud token list-vos
-    eosc-synergy.eu
-    fedcloud.egi.eu
-    training.egi.eu
-    ...
+* The “home directory” is not created automatically, so for the first time login, you may have to
+  create it. In the “secrets” folder, click on “Create secret” on the right side of your screen and
+  create a new secret with a path starting with your EGI Check-in ID (“e0b6.…@egi.eu” in the
+  screenshot)
 
-* List sites in EGI Federated Cloud
+.. image:: images/vault-create-secret.png
+  :width: 1200
+  :alt: Vault main window
+
+* Your “home directory” will be created together with your first secret. Click on “secrets” folder,
+  then your ID in the EGI Check-in to enter your private secret space, then browse/view/edit your
+  secrets
+
+Using Vault via Vault CLI and access token
+******************************************
+
+* Install Vault CLI  if needed. See https://www.vaultproject.io/downloads for downloading Vault for
+  different OS.
+
+* Set environment for URL of Vault server:
 
 ::
 
-    $ fedcloud site list
-    100IT
-    BIFI
-    CESGA
-    ...
+    $ export VAULT_ADDR=https://vault.services.fedcloud.eu:8200
 
-* Execute an OpenStack command, e.g. list images in eosc-synergy.eu VO on IISAS-FedCloud site
-  (or other combination of site and VO you have access):
+
+* Get your EGI Check-in access token (e.g. from https://aai.egi.eu/token/ or oidc-agent)
+  and set it to an environment variable:
 
 ::
 
-    $ fedcloud openstack image list --site IISAS-FedCloud --vo eosc-synergy.eu
-    Site: IISAS-FedCloud, VO: eosc-synergy.eu
-    +--------------------------------------+-------------------------------------------------+--------+
-    | ID                                   | Name                                            | Status |
-    +--------------------------------------+-------------------------------------------------+--------+
-    | 862d4ede-6a11-4227-8388-c94141a5dace | Image for EGI CentOS 7 [CentOS/7/VirtualBox]    | active |
-    ...
+    $ export ACCESS_TOKEN=”ADD_YOUR_ACCESS_TOKEN_HERE”
 
-* Execute an OpenStack command, e.g. list VMs in eosc-synergy.eu VO on all sites
-  and print output in JSON format for further machine processing:
+
+* Login to Vault using access tokens:
 
 ::
 
-    $ fedcloud openstack server list --site ALL_SITES --vo eosc-synergy.eu --json-output
-    [
-    {
-      "Site": "IISAS-FedCloud",
-      "VO": "eosc-synergy.eu",
-      "command": "server list",
-      "Exception": null,
-      "Error code": 0,
-      "Result": [
-        {
-          ...
-        },
-        ...
-      ]
-    },
-    ...
-    ]
+    $ vault write auth/jwt/login jwt=$ACCESS_TOKEN
+    Key                  Value
+    ---                  -----
+    token                s.XXXXXXXXXXXXXXXXXXXXXXX
 
-* Get helps from the client
+* The command will return a Vault’s token in the form “token   s.XXXXXXXXXXXXXXXXX”. Save the token
+  to an environment variable and use it for manipulation with secrets in Vault
 
 ::
 
-    $ fedcloud --help
-    Usage: fedcloud [OPTIONS] COMMAND [ARGS]...
+    $ export VAULT_TOKEN=”s.XXXXXXXXXXXXXX”
 
-    Options:
-      --help  Show this message and exit.
 
-    Commands:
-      endpoint       Endpoint command group for interaction with GOCDB and endpoints
-      openstack      Executing OpenStack commands on site and VO
-      openstack-int  Interactive OpenStack client on site and VO
-      site           Site command group for manipulation with site configurations
-      token          Token command group for manipulation with tokens
+* For convenience, set your Vault’s home path to an environment variable
 
-* Read the `Tutorial <https://docs.google.com/presentation/d/1aOdcceztXe8kZaIeVnioF9B0vIHLzJeklSNOdVCL3Rw/edit?usp=sharing>`_
-  presentation or next sections for more information.
+::
+
+    $ export VAULT_HOME=/secrets/YOUR_CHECKIN_ID@egi.eu/
+
+
+* List secrets in your “home directory”. VAULT_ADDR and VAULT_TOKEN must be set:
+
+::
+
+    $ vault list $VAULT_HOME
+
+
+* Create a new secret with name “test” in your “home directory”, store value “value1” in key “key1”:
+
+::
+
+    $ vault write $VAULT_HOME/test key1=value1
+
+* Read your secret:
+
+::
+
+    $ vault read $VAULT_HOME/test
+    Key                 Value
+    ---                 -----
+    refresh_interval    768h
+    key1                value1
+
+
+Using Vault via REST API or external clients
+********************************************
+
+Vault has a REST API with similar inputs like the CLI. There is a long list of libraries and external
+clients/tools for accessing secrets in Vault. See https://www.vaultproject.io/api or
+https://www.vaultproject.io/api-docs/relatedtools for more details.
+
+Note
+****
+
+The default expiration time of secrets (refresh_interval) is set to 768h (32 days). Users can
+set other expiration times for their secrets, e.g. 365 days, by adding option “ttl=365d” at creation.
+
+There are alternative commands “kv put”, “kv get” for “write”, “read”. The full list of Vault
+commands is available at https://www.vaultproject.io/docs/commands
