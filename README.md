@@ -1,4 +1,4 @@
-# Secret management service for EGI Federated Cloud
+# eduDNS: Dynamic DNS service for education
 
 This is the documentation repository for eduDNS service for GEANT.
 
