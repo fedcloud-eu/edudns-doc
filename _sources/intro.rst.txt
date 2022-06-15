@@ -1,17 +1,19 @@
 Introduction
 ============
 
-Applications in EGI Infrastructure may need different secrets (credentials, tokens, passwords, etc.) during deployments
-and operations. The secrets are often stored as clear texts in configuration files or code repositories that expose
-security risks. Furthermore, the secrets stored in files are static and difficult to change/rotate. The secret
-management service for EGI Infrastructure is developed to solve the issues.
+Nowadays, more and more services are dynamically deployed in Cloud environments. Usually,
+the services hosted on virtual machines in Cloud are accessible only via IP addresses or
+pre-configured hostnames given by the target Cloud providers, making it difficult to provide
+them with meaningful domain names. Dynamic DNS services exist to alleviate this problem, but
+none of them is scoped to the Academic realm.
 
-The secret management service is designed as follows:
+The eduDNS service is designed to provide a universal, vendor-independent Dynamic DNS support
+for all GÉANT users. Service owners will log in the eduDNS portal via eduGAIN, register
+meaningful, memorable hostnames (e.g. service-portal.vo.edudns.eu), assign the hostname to
+their servers then provide access to their services via the hostnames.
 
-* Non-intrusion: Operates as a stand-alone service, no extra efforts from site admins to support the service, no
-  additional permissions are needed for users.
-* Simple usage: Authentication via OIDC tokens from EGI Check-in, no extra credentials are required. The service is
-  based on Hashicorp’s Vault which is well-known in industry, with many client tools and libraries.
-* High-availability: Service instances are distributed on different sites, without single point of failure. A generic
-  endpoint https://vault.services.fedcloud.eu:8200 is dynamically assigned
-  to a healthy instance via Dynamic DNS service.
+eduDNS helps to simplify the deployment of services that are dynamically deployed in Cloud
+infrastructures. It removes the obstacles of changing IP addresses of services in Cloud at every
+deployment and enables obtaining SSL certificates for the hostnames. Service providers can
+migrate services from local servers to Cloud or from a Cloud site to another without noticing
+users from the change.

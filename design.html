@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Service design and implementation &mdash; Vault-doc  documentation</title>
+  <title>Service design and implementation &mdash; eduDNS-doc  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -28,7 +28,7 @@
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
             <a href="index.html">
-            <img src="_static/vault-logo-small.png" class="logo" alt="Logo"/>
+            <img src="_static/edudns-logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -42,11 +42,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Service design and implementation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#vault-servers">Vault servers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#generic-endpoint-and-high-availability">Generic endpoint and high availability</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Service design and implementation</a></li>
 </ul>
 
         </div>
@@ -55,7 +51,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Vault-doc</a>
+          <a href="index.html">eduDNS-doc</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -65,7 +61,7 @@
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
       <li>Service design and implementation</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/tdviet/vault-doc/blob/master/docs/design.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/tdviet/edudns-doc/blob/master/docs/design.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -75,43 +71,13 @@
              
   <section id="service-design-and-implementation">
 <h1>Service design and implementation<a class="headerlink" href="#service-design-and-implementation" title="Permalink to this heading"></a></h1>
-<p>In this section, the design and implementation of the service will be explained. It may be interesting
-for advanced users and developers how to achieve high availability of the service via Dynamic DNS.</p>
-<section id="vault-servers">
-<h2>Vault servers<a class="headerlink" href="#vault-servers" title="Permalink to this heading"></a></h2>
-<p>Three Vault servers located at IISAS, INFN and  IFCA for high availability with server names:</p>
-<ul class="simple">
-<li><p>vault-iisas.services.fedcloud.eu,</p></li>
-<li><p>vault-infn.services.fedcloud.eu,</p></li>
-<li><p>vault-ifca.services.fedcloud.eu.</p></li>
-</ul>
-<p>The servers are connected together to a cluster (one active, two standby). If the active server falls,
-one of the remaining standby servers will become active automatically. Data is replicated among servers
-using the Raft Consensus algorithm supported by Vault integrated storage.</p>
-<p>Users can connect directly to any of the mentioned servers. If the connected server is in standby mode,
-it will forward users’ requests to the active server.</p>
-<a class="reference internal image-reference" href="_images/vault-scheme.png"><img alt="Vault scheme" src="_images/vault-scheme.png" style="width: 1024px;" /></a>
-</section>
-<section id="generic-endpoint-and-high-availability">
-<h2>Generic endpoint and high availability<a class="headerlink" href="#generic-endpoint-and-high-availability" title="Permalink to this heading"></a></h2>
-<p>As mentioned above, users can use any of the endpoints directly:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://vault-iisas.services.fedcloud.eu:8200">https://vault-iisas.services.fedcloud.eu:8200</a>,</p></li>
-<li><p><a class="reference external" href="https://vault-infn.services.fedcloud.eu:8200">https://vault-infn.services.fedcloud.eu:8200</a>,</p></li>
-<li><p><a class="reference external" href="https://vault-ifca.services.fedcloud.eu:8200">https://vault-ifca.services.fedcloud.eu:8200</a>,</p></li>
-</ul>
-<p>However, accessing the service via the endpoints is not recommended: if a server is down, its endpoint
-is not accessible.</p>
-<p>For convenience and high availability, a generic endpoint <a class="reference external" href="https://vault.services.fedcloud.eu:8200">https://vault.services.fedcloud.eu:8200</a>
-should be used for accessing the service. The endpoint will be attached to one of the <em>vault-infn</em>
-and <em>vault-ifca</em> server instances automatically via Dynamic DNS service (located at IISAS).
-A simple cron script, running on the server instances at INFN and IFCA, will make a periodically
-check and assign the generic hostname <em>vault.services.fedcloud.eu</em> to the healthy server.</p>
-<p>The recovery time of the generic endpoint, in the case of the unscheduled downtime of the generic
-endpoint’s server, is T+1 minutes, where T is the interval between cron checks (1min) . In the case
-of scheduled downtime for maintenance, admins simply assign the generic endpoint to the other server
-instance before shutdowning the service.</p>
-</section>
+<p>The architecture of the eduDNS service is described in the scheme below. The main component of
+the service will be an NS-update server which consists of a GUI front-end, a REST API and a
+backend engine for the Dynamic DNS service. Users will log in to GUI front-end using
+eduGAIN/eduTEAMS account and register hostnames in supported domains (by default edudns.eu).
+After obtaining the hostnames, users will be able to assign/update IP addresses of VMs/servers
+to the hostnames, then access the VMs/services via the registered hostnames.</p>
+<a class="reference internal image-reference" href="_images/edudns-scheme.jpg"><img alt="Vault scheme" src="_images/edudns-scheme.jpg" style="width: 1024px;" /></a>
 </section>
 
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Usage &mdash; Vault-doc  documentation</title>
+  <title>Usage &mdash; eduDNS-doc  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -29,7 +29,7 @@
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
             <a href="index.html">
-            <img src="_static/vault-logo-small.png" class="logo" alt="Logo"/>
+            <img src="_static/edudns-logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -42,13 +42,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#using-vault-via-web-based-gui">Using Vault via web-based GUI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-vault-via-vault-cli-and-access-token">Using Vault via Vault CLI and access token</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-vault-via-rest-api-or-external-clients">Using Vault via REST API or external clients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="design.html">Service design and implementation</a></li>
 </ul>
 
@@ -58,7 +52,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Vault-doc</a>
+          <a href="index.html">eduDNS-doc</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -68,7 +62,7 @@
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
       <li>Usage</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/tdviet/vault-doc/blob/master/docs/quickstart.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/tdviet/edudns-doc/blob/master/docs/quickstart.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -78,109 +72,9 @@
              
   <section id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h1>
-<p>Vault service can be used via web-based GUI, command-line client or third-party tools/libraries.</p>
-<section id="using-vault-via-web-based-gui">
-<h2>Using Vault via web-based GUI<a class="headerlink" href="#using-vault-via-web-based-gui" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p>Open <a class="reference external" href="https://vault.services.fedcloud.eu:8200">https://vault.services.fedcloud.eu:8200</a> in your browser.</p></li>
-<li><p>Choose OIDC authentication method in the pulldown menu, and click on the button
-<em>“Sign in with OIDC provider”</em></p></li>
-</ul>
-<a class="reference internal image-reference" href="_images/vault-login-oidc.png"><img alt="Vault login via OIDC" src="_images/vault-login-oidc.png" style="width: 640px;" /></a>
-<ul class="simple">
-<li><p>Login via EGI Check-in and authorize the Vault GUI.</p></li>
-<li><p>You have logged into the Vault GUI. Each user has a private secret space, a “home directory” in
-the secret engine “secrets”, with EGI Check-in ID as the folder name.</p></li>
-</ul>
-<a class="reference internal image-reference" href="_images/vault-main-window.png"><img alt="Vault main window" src="_images/vault-main-window.png" style="width: 640px;" /></a>
-<ul class="simple">
-<li><p>The “home directory” is not created automatically, so for the first time login, you may have to
-create it. In the “secrets” folder, click on “Create secret” on the right side of your screen and
-create a new secret with a path starting with your EGI Check-in ID (“e0b6.…&#64;egi.eu” in the
-screenshot)</p></li>
-</ul>
-<a class="reference internal image-reference" href="_images/vault-create-secret.png"><img alt="Vault main window" src="_images/vault-create-secret.png" style="width: 1200px;" /></a>
-<ul class="simple">
-<li><p>Your “home directory” will be created together with your first secret. Click on “secrets” folder,
-then your ID in the EGI Check-in to enter your private secret space, then browse/view/edit your
-secrets</p></li>
-</ul>
-</section>
-<section id="using-vault-via-vault-cli-and-access-token">
-<h2>Using Vault via Vault CLI and access token<a class="headerlink" href="#using-vault-via-vault-cli-and-access-token" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p>Install Vault CLI  if needed. See <a class="reference external" href="https://www.vaultproject.io/downloads">https://www.vaultproject.io/downloads</a> for downloading Vault for
-different OS.</p></li>
-<li><p>Set environment for URL of Vault server:</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export VAULT_ADDR=https://vault.services.fedcloud.eu:8200
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Get your EGI Check-in access token (e.g. from <a class="reference external" href="https://aai.egi.eu/token/">https://aai.egi.eu/token/</a> or oidc-agent)
-and set it to an environment variable:</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export ACCESS_TOKEN=”ADD_YOUR_ACCESS_TOKEN_HERE”
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Login to Vault using access tokens:</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vault write auth/jwt/login jwt=$ACCESS_TOKEN
-Key                  Value
----                  -----
-token                s.XXXXXXXXXXXXXXXXXXXXXXX
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>The command will return a Vault’s token in the form “token   s.XXXXXXXXXXXXXXXXX”. Save the token
-to an environment variable and use it for manipulation with secrets in Vault</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export VAULT_TOKEN=”s.XXXXXXXXXXXXXX”
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>For convenience, set your Vault’s home path to an environment variable</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export VAULT_HOME=/secrets/YOUR_CHECKIN_ID@egi.eu/
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>List secrets in your “home directory”. VAULT_ADDR and VAULT_TOKEN must be set:</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vault list $VAULT_HOME
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Create a new secret with name “test” in your “home directory”, store value “value1” in key “key1”:</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vault write $VAULT_HOME/test key1=value1
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Read your secret:</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vault read $VAULT_HOME/test
-Key                 Value
----                 -----
-refresh_interval    768h
-key1                value1
-</pre></div>
-</div>
-</section>
-<section id="using-vault-via-rest-api-or-external-clients">
-<h2>Using Vault via REST API or external clients<a class="headerlink" href="#using-vault-via-rest-api-or-external-clients" title="Permalink to this heading"></a></h2>
-<p>Vault has a REST API with similar inputs like the CLI. There is a long list of libraries and external
-clients/tools for accessing secrets in Vault. See <a class="reference external" href="https://www.vaultproject.io/api">https://www.vaultproject.io/api</a> or
-<a class="reference external" href="https://www.vaultproject.io/api-docs/relatedtools">https://www.vaultproject.io/api-docs/relatedtools</a> for more details.</p>
-</section>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h2>
-<p>The default expiration time of secrets (refresh_interval) is set to 768h (32 days). Users can
-set other expiration times for their secrets, e.g. 365 days, by adding option “ttl=365d” at creation.</p>
-<p>There are alternative commands “kv put”, “kv get” for “write”, “read”. The full list of Vault
-commands is available at <a class="reference external" href="https://www.vaultproject.io/docs/commands">https://www.vaultproject.io/docs/commands</a></p>
-</section>
+<p>The service is still in development. Full user documentation will be provided once the UI
+is stabilized. So far, please refer to the documentation of the similar service developed for
+EGI Cloud federation at <a class="reference external" href="https://docs.egi.eu/users/compute/cloud-compute/dynamic-dns/">https://docs.egi.eu/users/compute/cloud-compute/dynamic-dns/</a>.</p>
 </section>
 
 
