@@ -9,7 +9,8 @@ eduDNS: Dynamic DNS service for education is available at https://edudns.fedclou
 Note:
 *****
 
-the service is in active development. Some features/documentations are still not completed.
+The service is in active development. GUI is still not accessible for general public as
+some features and documentations are still not completed.
 Sorry for your inconvenience and thank you for understanding.
 
 
