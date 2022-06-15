@@ -1,3 +1,3 @@
 GitHub Pages of [fedcloud-eu/edudns-doc](https://github.com/fedcloud-eu/edudns-doc.git)
 ===
-Sphinx html documentation of [98884183](https://github.com/fedcloud-eu/edudns-doc/tree/98884183c406d452e8e38810ddd0484468177136)
+Sphinx html documentation of [0a1b44c6](https://github.com/fedcloud-eu/edudns-doc/tree/0a1b44c63ffcc3b1af7c5f7079b887869d7773e5)
