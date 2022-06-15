@@ -1,10 +1,10 @@
 .. vault-doc documentation master file
 
 
-Welcome to Vault service documentation!
+Welcome to eduDNS documentation!
 =======================================
 
-Vault service for EGI Infrastructure is available at https://vault.services.fedcloud.eu:8200.
+eduDNS service for GEANT is available at https://edudns.fedcloud.eu
 
 .. toctree::
    :maxdepth: 2

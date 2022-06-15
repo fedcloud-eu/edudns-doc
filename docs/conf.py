@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath("../"))
 
 # -- Project information -----------------------------------------------------
 
-project = "Vault-doc"
+project = "eduDNS-doc"
 copyright = "2022, Viet Tran"
 author = "Viet Tran"
 
@@ -53,7 +53,7 @@ exclude_patterns: List[str] = []
 html_context = {
     "display_github": True,
     "github_user": "tdviet",
-    "github_repo": "vault-doc",
+    "github_repo": "edudns-doc",
     "github_version": "master/docs/",
 }
 
@@ -61,7 +61,7 @@ html_context = {
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
-html_logo = "images/vault-logo-small.png"
+html_logo = "images/edudns-logo.png"
 html_theme_options = {
     "logo_only": True,
     "display_version": False,
