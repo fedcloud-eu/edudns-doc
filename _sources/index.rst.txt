@@ -22,6 +22,7 @@ Sorry for your inconvenience and thank you for understanding.
    quickstart
    design
    usage
+   privace
 
 
 
