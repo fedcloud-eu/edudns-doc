@@ -4,7 +4,14 @@
 Welcome to eduDNS documentation!
 =======================================
 
-eduDNS service for GEANT is available at https://edudns.fedcloud.eu
+eduDNS: Dynamic DNS service for education is available at https://edudns.fedcloud.eu
+
+Note:
+*****
+
+the service is in active development. Some features/documentations are still not completed.
+Sorry for your inconvenience and thank you for understanding.
+
 
 .. toctree::
    :maxdepth: 2
