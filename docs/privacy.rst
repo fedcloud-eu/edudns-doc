@@ -2,7 +2,7 @@ Privacy Notice
 ==============
 
 
-.. list-table:: Privace notice
+.. list-table:: Privacy notice
 
    * - Name of the Service
      - eduDNS: Dynamic DNS service for education
