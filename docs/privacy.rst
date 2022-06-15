@@ -3,7 +3,7 @@ Privacy Notice
 
 
 .. list-table:: Privacy notice
-
+   :widths: 25 75
    * - Name of the Service
      - eduDNS: Dynamic DNS service for education
    * - Description of the Service
