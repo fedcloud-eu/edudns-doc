@@ -12,8 +12,11 @@ Privacy Notice
        register meaningful, memorable hostnames (e.g. service-portal.vo.edudns.eu), assign the
        hostname to their servers then provide access to their services via the hostnames.
    * - Data controller and a contact person
-     - Instiute of Informatics, Slovak Academy of Sciences, Dubravska cesta 9, 84507 Bratislava,
-       Slovakia. Contact person for eduDNS: Viet Tran, email: viet.tran@savba.sk
+     - Instiute of Informatics, Slovak Academy of Sciences,
+
+       Dubravska cesta 9, 84507 Bratislava, Slovakia.
+
+       Contact person for eduDNS: Viet Tran, email: viet.tran@savba.sk
 
 
 
