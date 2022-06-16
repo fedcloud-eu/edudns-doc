@@ -52,7 +52,7 @@ exclude_patterns: List[str] = []
 
 html_context = {
     "display_github": True,
-    "github_user": "tdviet",
+    "github_user": "fedcloud-eu",
     "github_repo": "edudns-doc",
     "github_version": "master/docs/",
 }
