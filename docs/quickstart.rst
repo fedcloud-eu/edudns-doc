@@ -12,26 +12,26 @@ Using GUI portal for registering hostnames and assign IP address
 
 * Click on ``Log in`` to go to login screen and choose eduTEAMS:
 
-.. image:: images/edudns-login.jpg
+.. image:: images/edudns-login.png
   :width: 1024
   :alt: Vault scheme
 
 * After logging in via your eduTEAMS account, go to ``Overview`` tab:
 
-.. image:: images/edudns-overview.jpg
+.. image:: images/edudns-overview.png
   :width: 1024
   :alt: Vault scheme
 
 * Now you can manage your existing hostnames (if any) or register new ones. Click on
   ``Add Host`` to register a new hostname:
 
-.. image:: images/edudns-create-host.jpg
+.. image:: images/edudns-create-host.png
   :width: 1024
   :alt: Vault scheme
 
 * Enter a hostname, choose a domain for your hostname then click on ``Create`` :
 
-.. image:: images/edudns-create-host-demo.jpg
+.. image:: images/edudns-create-host-demo.png
   :width: 1024
   :alt: Vault scheme
 
@@ -40,7 +40,7 @@ Using GUI portal for registering hostnames and assign IP address
   https://HOSTNAME:SECRET@@edudns.services.fedcloud.eu/nic/update ) is also printed for copy
   and paste. Save the URL securely for late use.
 
-.. image:: images/edudns-url.jpg
+.. image:: images/edudns-url.png
   :width: 1024
   :alt: Vault scheme
 
@@ -48,7 +48,7 @@ Using GUI portal for registering hostnames and assign IP address
   on the hostname to perform any action: update IP address, show configuration or
   delete it:
 
-.. image:: images/edudns-edit-host.jpg
+.. image:: images/edudns-edit-host.pgn
   :width: 1024
   :alt: Vault scheme
 
