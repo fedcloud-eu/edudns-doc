@@ -48,7 +48,7 @@ Using GUI portal for registering hostnames and assign IP address
   on the hostname to perform any action: update IP address, show configuration or
   delete it:
 
-.. image:: images/edudns-edit-host.pgn
+.. image:: images/edudns-edit-host.png
   :width: 512
   :alt: Vault scheme
 
