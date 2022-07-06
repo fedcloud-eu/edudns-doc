@@ -6,33 +6,33 @@ Using GUI portal for registering hostnames and assign IP address
 
 * Open the link https://edudns.services.fedcloud.eu/ in your browser:
 
-.. image:: images/edudns-home.jpg
-  :width: 1024
+.. image:: images/edudns-home.png
+  :width: 512
   :alt: Vault scheme
 
 * Click on ``Log in`` to go to login screen and choose eduTEAMS:
 
 .. image:: images/edudns-login.png
-  :width: 1024
+  :width: 512
   :alt: Vault scheme
 
 * After logging in via your eduTEAMS account, go to ``Overview`` tab:
 
 .. image:: images/edudns-overview.png
-  :width: 1024
+  :width: 512
   :alt: Vault scheme
 
 * Now you can manage your existing hostnames (if any) or register new ones. Click on
   ``Add Host`` to register a new hostname:
 
 .. image:: images/edudns-create-host.png
-  :width: 1024
+  :width: 512
   :alt: Vault scheme
 
 * Enter a hostname, choose a domain for your hostname then click on ``Create`` :
 
 .. image:: images/edudns-create-host-demo.png
-  :width: 1024
+  :width: 512
   :alt: Vault scheme
 
 * Your hostname has been create with a secret for updating IP. For your convenience, the
@@ -41,7 +41,7 @@ Using GUI portal for registering hostnames and assign IP address
   and paste. Save the URL securely for late use.
 
 .. image:: images/edudns-url.png
-  :width: 1024
+  :width: 512
   :alt: Vault scheme
 
 * Go back to the ``Overview`` tab, your newly registered hostname is now listed. Click
@@ -49,7 +49,7 @@ Using GUI portal for registering hostnames and assign IP address
   delete it:
 
 .. image:: images/edudns-edit-host.pgn
-  :width: 1024
+  :width: 512
   :alt: Vault scheme
 
 Using command line to update IP address
