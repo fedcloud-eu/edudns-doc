@@ -6,7 +6,7 @@ Privacy Notice
    :widths: 25 75
 
    * - Name of the Service
-     - eduDNS: Dynamic DNS service for education
+     - eduDNS: Dynamic DNS service for Academia
    * - Description of the Service
      - The eduDNS service is designed to provide a universal, vendor-independent Dynamic DNS
        support for all GÉANT users. Service owners will log in the eduDNS portal via eduGAIN,
