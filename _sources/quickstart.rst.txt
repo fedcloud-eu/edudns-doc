@@ -66,7 +66,7 @@ is executed):
     good 147.213.76.198
 
 
+Support
+*******
 
-
-
-
+For additional questions, requests and support, please contact fedcloud@fedcloud.eu.

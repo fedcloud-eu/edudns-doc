@@ -10,14 +10,14 @@ Privacy Notice
    * - Description of the Service
      - The eduDNS service is designed to provide a universal, vendor-independent Dynamic DNS
        support for all GÉANT users. Service owners will log in the eduDNS portal via eduGAIN,
-       register meaningful, memorable hostnames (e.g. service-portal.vo.edudns.eu), assign the
+       register meaningful, memorable hostnames (e.g. service-portal.vm.edudns.eu), assign the
        hostname to their servers then provide access to their services via the hostnames.
    * - Data controller and a contact person
      - Institute of Informatics, Slovak Academy of Sciences,
 
        Dubravska cesta 9, 84507 Bratislava, Slovakia.
 
-       Contact person for eduDNS: Viet Tran, email: viet.tran@savba.sk
+       Contact person for eduDNS: Viet Tran, email: fedcloud@fedcloud.eu
    * - Personal data processed and the legal basis for processing
      - During  your use of the Service we may process and record the following data:
           * Unique transient session identifier (Session UUID): To initiate a new and unique
