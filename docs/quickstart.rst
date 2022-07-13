@@ -56,7 +56,7 @@ Using command line to update IP address
 ***************************************
 
 For automation, it is useful to update IP address via command-line or API, e.g. for
-assigning IP in installation script. Simply send a request to the URL, e.g. using ``curl``
+assigning IPs in installation scripts. Simply send a request to the URL, e.g. using ``curl``
 command will update the IP address of the hostname to the actual host (where the command
 is executed):
 
