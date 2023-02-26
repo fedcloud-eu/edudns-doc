@@ -4,7 +4,7 @@
 Welcome to eduDNS documentation!
 =======================================
 
-eduDNS: Dynamic DNS service for education is available at https://edudns.fedcloud.eu
+eduDNS: Dynamic DNS service for education is available at https://edudns.services.fedcloud.eu
 
 .. toctree::
    :maxdepth: 2
